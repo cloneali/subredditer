@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Paginator extends Component {
   static propTypes = {
@@ -7,50 +7,50 @@ export default class Paginator extends Component {
     after: PropTypes.string,
     subreddit: PropTypes.string,
     fetchPost: PropTypes.func.isRequired
-  };
+  }
 
   static defaultProps = {
     before: null,
     after: null,
-    subreddit: ""
-  };
+    subreddit: ''
+  }
 
   goPrevious = event => {
-    this.props.fetchPost(this.props.subreddit, "previous");
-    window.scrollTo(0, 0);
-  };
+    this.props.fetchPost(this.props.subreddit, 'previous')
+    window.scrollTo(0, 0)
+  }
 
   goNext = event => {
-    this.props.fetchPost(this.props.subreddit, "next");
-    window.scrollTo(0, 0);
-  };
+    this.props.fetchPost(this.props.subreddit, 'next')
+    window.scrollTo(0, 0)
+  }
   render() {
-    let { before, after } = this.props;
+    let { before, after } = this.props
     return (
       <React.Fragment>
-        <div className="right item">
+        <div className='right item'>
           <button
-            data-test-id="paginator-previous"
+            data-test-id='paginator-previous'
             onClick={this.goPrevious}
-            className="ui labeled icon button"
+            className='ui labeled icon button'
             disabled={!before}
           >
-            <i className="left arrow icon" />
+            <i className='left arrow icon' />
             Previous
           </button>
         </div>
-        <div className="right item">
+        <div className='right item'>
           <button
-            data-test-id="paginator-next"
+            data-test-id='paginator-next'
             onClick={this.goNext}
-            className="ui right labeled icon button"
+            className='ui right labeled icon button'
             disabled={!after}
           >
-            <i className="right arrow icon" />
+            <i className='right arrow icon' />
             Next
           </button>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }

@@ -1,65 +1,65 @@
-import React from "react";
-import { mount } from "enzyme";
+import React from 'react'
+import { mount } from 'enzyme'
 
-import Header from "components/Header";
-import Root from "components/Root";
+import Header from 'components/Header'
+import Root from 'components/Root'
 
-describe("<Header />", () => {
+describe('<Header />', () => {
   const initialState = {
     posts: {
-      status: "SUCCESS",
-      subreddit: "Ottawa",
-      previousURL: "/.json?count=25&after=t3_byclj4",
-      URL: "/.json?count=25&after=t3_byclj4",
+      status: 'SUCCESS',
+      subreddit: 'Ottawa',
+      previousURL: '/.json?count=25&after=t3_byclj4',
+      URL: '/.json?count=25&after=t3_byclj4',
       count: 25,
       data: {
-        after: "t3_bydho1",
-        before: "t3_by80vd"
+        after: 't3_bydho1',
+        before: 't3_by80vd'
       }
     }
-  };
-  let wrapped;
+  }
+  let wrapped
 
   beforeEach(() => {
     wrapped = mount(
       <Root initialState={initialState}>
         <Header />
       </Root>
-    );
-  });
+    )
+  })
 
   afterEach(() => {
-    wrapped.unmount();
-  });
+    wrapped.unmount()
+  })
 
-  it("should render correctly", () => {
+  it('should render correctly', () => {
     //Asserting Page Header Title
     expect(
       wrapped
         .render()
-        .find(".ui.header")
+        .find('.ui.header')
         .text()
-    ).toContain("Subredditer");
+    ).toContain('Subredditer')
 
     // Asserting Sub header
     expect(
       wrapped
         .render()
-        .find(".sub.header")
+        .find('.sub.header')
         .text()
-    ).toContain("Ottawa");
+    ).toContain('Ottawa')
 
     // Asserting After value passed to Paginator
-    expect(wrapped.find("Paginator").prop("after")).toEqual(
+    expect(wrapped.find('Paginator').prop('after')).toEqual(
       initialState.posts.data.after
-    );
+    )
 
     // Asserting Before value passed to Paginator
-    expect(wrapped.find("Paginator").prop("before")).toEqual(
+    expect(wrapped.find('Paginator').prop('before')).toEqual(
       initialState.posts.data.before
-    );
+    )
 
     //Asserting Search component present
-    expect(wrapped.exists("Search")).toBe(true);
-  });
-});
+    expect(wrapped.exists('Search')).toBe(true)
+  })
+})
